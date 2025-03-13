@@ -1,14 +1,14 @@
-import { Button, HStack } from "@chakra-ui/react";
-import { ColorModeButton, ColorModeIcon } from "./components/ui/color-mode";
+import { Route, Routes } from "react-router";
+import HomePage from "./pages/HomePage/HomePage";
+import AuthPage from "./pages/AuthPage/AuthPage";
 
 function App() {
   return (
     <>
-      <h1>Hello React</h1>
-      <HStack>
-      <Button variant="plain" >Click me</Button>
-      <Button variant="surface" >Click me</Button>
-    </HStack>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/auth" element={<AuthPage />} />
+      </Routes>
     </>
   );
 }
