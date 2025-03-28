@@ -1,7 +1,10 @@
+import { ColorModeButton } from "@/components/ui/color-mode"
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div>
+      home
+    </div>
   )
 }
 
