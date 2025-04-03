@@ -10,7 +10,7 @@ const FeedPost = ({img,avatar,username}) => {
         <Box borderRadius={6} overflow={"hidden"} >
             <Image src={img} alt="user profile pic" />
         </Box>
-        <PostFooter />
+        <PostFooter username={"marley udoy"} />
     </>
   )
 }

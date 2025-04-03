@@ -1,3 +1,4 @@
+import Modal from "@/components/ui/Modal";
 import {
   Button,
   CloseButton,
@@ -7,14 +8,13 @@ import {
   Image,
   Portal,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { FaComment } from "react-icons/fa";
 
 const ProfilePost = ({ img }) => {
-  const {isOpen, onOpen, onClose} = useDisclosure();
+  const [isModal, setIsModal] = useState(false);
 
   return (
     <>
@@ -28,6 +28,7 @@ const ProfilePost = ({ img }) => {
         aspectRatio={1 / 1}
       >
         <Flex
+        onClick={()=>setIsModal(!isModal)}
           opacity={0}
           _hover={{ opacity: 1 }}
           position={"absolute"}
@@ -63,39 +64,7 @@ const ProfilePost = ({ img }) => {
           style={{ objectFit: "cover" }}
         />
       </GridItem>
-
-      <Dialog.Root>
-        <Dialog.Trigger asChild>
-          <Button variant="outline" w="full" h="full" size="sm">
-            Open Dialog
-          </Button>
-        </Dialog.Trigger>
-        <Portal>
-          <Dialog.Backdrop />
-          <Dialog.Positioner>
-            <Dialog.Content>
-              <Dialog.Header>
-                <Dialog.Title>Dialog Title</Dialog.Title>
-              </Dialog.Header>
-              <Dialog.Body>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </Dialog.Body>
-              <Dialog.Footer>
-                <Dialog.ActionTrigger asChild>
-                  <Button variant="outline">Cancel</Button>
-                </Dialog.ActionTrigger>
-                <Button>Save</Button>
-              </Dialog.Footer>
-              <Dialog.CloseTrigger asChild>
-                <CloseButton size="sm" />
-              </Dialog.CloseTrigger>
-            </Dialog.Content>
-          </Dialog.Positioner>
-        </Portal>
-      </Dialog.Root>
+      {isModal && <Modal isModal={isModal} setIsModal={setIsModal} />}
     </>
   );
 };
