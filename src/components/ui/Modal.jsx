@@ -7,12 +7,22 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { MdDelete } from "react-icons/md";
 import Comment from "../Comments/Comment";
 import PostFooter from "../FeedPosts/PostFooter";
 
 const Modal = ({ isModal, setIsModal }) => {
+  useEffect(() => {
+    if (isModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isModal]);
   return (
     <Container
       maxH={"100vw"}
@@ -37,7 +47,7 @@ const Modal = ({ isModal, setIsModal }) => {
           onClick={() => setIsModal(false)}
           right={0}
         />
-        <Flex flexDirection={{ base: "column", md: "row" }} p={5} gap={5}>
+        <Flex overflowY={"scroll"} flexDirection={{ base: "column", md: "row" }} p={5} gap={5}>
           <Box borderRadius={10} overflow={"hidden"} flex={1}>
             <Image src="/img1.png" />
           </Box>
