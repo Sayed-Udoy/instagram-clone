@@ -1,7 +1,6 @@
 import { CommentLogo, NotificationsLogo, UnlikeLogo } from "@/assets/contants";
 import { Box, Button, Flex, Group, Input, Span, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { InputGroup } from "../ui/input-group";
 
 const PostFooter = () => {
   const [liked, setLiked] = useState(false);
@@ -31,7 +30,7 @@ const PostFooter = () => {
         {likes} likes
       </Text>
       <Text fontWeight={700} fontSize={"sm"}>
-        as a programmer
+        as a programmer {" "}
         <Text as={Span} fontSize={"sm"} color={"gray"}>
           Feeling good
         </Text>
